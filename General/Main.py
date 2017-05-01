@@ -15,7 +15,7 @@ training_targets = digits.target[0:num_training]
 testing_images = images[num_training: images.shape[0]]
 testing_targets = digits.target[num_training:digits.target.shape[0]]
 
-tree = ConvolveTree(training_images, training_targets, 9, BasicResponse)
+tree = ConvolveTree(training_images, training_targets, 16, BasicResponse)
 print("tree: \n", tree)
 print("max class distributions: ", tree.get_end_max_classification_percentages())
 
@@ -24,7 +24,7 @@ num_possible = 0
 for i in range(0, testing_images.shape[0]):
     prediction_distribution = tree.predict(testing_images[i])
     predicted_class = numpy.argmax(prediction_distribution)
-    if not prediction_distribution[0] == "DEAD FORK" or not numpy.isnan(prediction_distribution[predicted_class]):
+    if not prediction_distribution[0] == "DEAD FORK" and not numpy.isnan(prediction_distribution[predicted_class]):
         target = testing_targets[i]
         if predicted_class == target:
             num_correct += 1

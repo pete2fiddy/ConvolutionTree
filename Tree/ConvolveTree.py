@@ -53,8 +53,8 @@ class ConvolveTree(object):
             
             if self.forks[depth_index][child_fork_index].get_if_is_dead():
                 if parent_response:
-                    return self.forks[len(self.forks)-1][parent_fork_index].get_classification_distributions()[0][1]
-                return self.forks[len(self.forks)-1][parent_fork_index].get_classification_distributions()[1][1]
+                    return self.forks[depth_index-1][parent_fork_index].get_classification_distributions()[0][1]
+                return self.forks[depth_index-1][parent_fork_index].get_classification_distributions()[1][1]
                 
             
             child_response = self.forks[depth_index][child_fork_index].get_if_image_is_pos(parent_convolve)
