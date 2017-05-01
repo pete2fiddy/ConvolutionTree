@@ -24,10 +24,10 @@ num_possible = 0
 for i in range(0, testing_images.shape[0]):
     prediction_distribution = tree.predict(testing_images[i])
     predicted_class = numpy.argmax(prediction_distribution)
-    if not prediction_distribution[0] == "DEAD FORK" and not numpy.isnan(prediction_distribution[predicted_class]):
-        target = testing_targets[i]
-        if predicted_class == target:
-            num_correct += 1
-        num_possible += 1
+    #if not prediction_distribution[0] == "DEAD FORK" and not numpy.isnan(prediction_distribution[predicted_class]):
+    target = testing_targets[i]
+    if predicted_class == target:
+        num_correct += 1
+    num_possible += 1
 print("num possible was: ", num_possible)
 print("percent correct: ", 100*float(num_correct)/float(num_possible))
